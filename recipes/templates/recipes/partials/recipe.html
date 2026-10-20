@@ -4,40 +4,41 @@
     </div>
 
     <div class="recipe-title-container">
-        <h2 class="recipe-title">Receita Exemplo </h2>
+        <h2 class="recipe-title">{{ recipe.title }}</h2>
     </div>
 
     <div class="recipe-author">
         <span class="recipe-author-item">
             <i class="bi bi-person-fill"></i>
-            <span>Autor da Receita</span>
+            <span>{{ recipe.author.first_name }} {{ recipe.author.last_name }}</span>
         </span>
         
         <span class="recipe-author-item">
             <i class="bi bi-calendar-week"></i>
+            {{ recipe.created_at|date:"d/m/Y"}}
         </span>
         
         <span class="recipe-author-item">
             <a href="/">
                 <i class="bi bi-stack"></i>
-                <span>Categoria</span>
+                <span>{{ recipe.category.name }}</span>
             </a>
         </span>
     </div>
 
     <div class="recipe-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere facilisis elementum. Vestibulum elementum mi odio, in mollis dui maximus vitae. 
+        {{ recipe.description }}
     </div>
 
     <div class="recipe-meta-container">
         <div class="recipe-meta">
             <h3 class="recipe-meta-title"><i class="bi bi-stopwatch-fill"></i> Preparo</h3>
-            <div class="recipe-meta-text">30 minutos</div>
+            <div class="recipe-meta-text">{{ recipe.preparation_time }} {{ recipe.preparation_time_unit }}</div>
         </div>
 
         <div class="recipe-meta">
             <h3 class="recipe-meta-title"><i class="bi bi-people-fill"></i> Porções</h3>
-            <div class="recipe-meta-text">4 pessoas</div>
+            <div class="recipe-meta-text">{{ recipe.servings }} {{ recipe.servings_unit }} </div>
         </div>
     </div>
 
