@@ -16,7 +16,15 @@
     <div class="recipe-author">
         <span class="recipe-author-item">
             <i class="bi bi-person-fill"></i>
-            <span>{{ recipe.author.first_name }} {{ recipe.author.last_name }}</span>
+
+            {% if recipe.author.first_name %}
+                <span>{{ recipe.author.first_name }} {{ recipe.author.last_name }}</span>
+
+            {% else %}
+
+                {{ recipe.author.username }}
+
+            {% endif %}
         </span>
         
         <span class="recipe-author-item">
@@ -24,12 +32,14 @@
             {{ recipe.created_at|date:"d/m/Y"}}
         </span>
         
+        {% if recipe.category is not None %}
         <span class="recipe-author-item">
-            <a href="/">
+            <a href="{% url 'recipes:category' recipe.category.id %}">
                 <i class="bi bi-stack"></i>
                 <span>{{ recipe.category.name }}</span>
             </a>
         </span>
+        {% endif %}
     </div>
 
     <div class="recipe-content">
